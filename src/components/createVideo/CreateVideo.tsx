@@ -45,7 +45,12 @@ function CreateVideo() {
             darkMode={darkMode}
             onSubmit={e => {
               e.preventDefault();
-              createVideo(userId, formData.title, formData.cardImage);
+              createVideo(
+                userId,
+                formData.title,
+                formData.cardImage,
+                formData.description
+              );
               handleModal();
             }}
           >
