@@ -1,62 +1,38 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ openMenu: boolean }>`
-  width: 100%;
+export const Container = styled.div<{ openMenu: boolean; darkMode: boolean }>`
+  margin-top: 80px;
+  max-width: 100%;
   box-sizing: border-box;
   display: grid;
-  padding: ${({ openMenu }) => (openMenu ? '0 40px' : '0 0')};
+  padding: ${({ openMenu }) => (openMenu ? '0 100px' : '0 30px')};
   grid-template-columns: ${({ openMenu }) =>
     openMenu ? 'repeat(4, 1fr)' : 'repeat(5, 1fr)'};
   column-gap: 20px;
   row-gap: 25px;
+  background-color: ${({ darkMode }) =>
+    darkMode ? 'hsl(0, 0%, 5%)' : 'white'};
+  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
 `;
 
-export const CategoryBar = styled.div`
+export const SeparatorContainer = styled.div<{ openMenu: boolean }>`
   display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  position: sticky;
   width: 100%;
-  top: 55px;
-  height: 50px;
-  margin: 0 0 20px 0;
-  padding-block: 5px;
-  gap: 10px;
-  background-color: white;
-  flex-wrap: nowrap;
-  overflow: auto;
-  scrollbar-width: none;
-
-  ::-webkit-scrollbar {
-    height: 0;
-  }
+  margin-block: 20px;
+  padding: ${({ openMenu }) => (openMenu ? '0 100px' : '0 30px')};
 `;
 
-export const CategorySelector = styled.button`
-  outline: transparent;
-  padding: 6px 10px;
-  background-color: #e6e6e6;
-  cursor: pointer;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  transition: 0.2s;
-  max-height: 30px;
-  min-width: fit-content;
-
-  :hover {
-    background-color: #d9d9d9;
-  }
-`;
-
-export const Separator = styled.div`
+export const Separator = styled.div<{ darkMode: boolean }>`
   height: 20px;
   width: 100%;
-  border-top: 3px solid #d9d9d9;
-  margin: 10px 0;
+  border-top: ${({ darkMode }) =>
+    darkMode ? '2px solid hsl(0, 0%, 40%)' : '2px solid #d9d9d9'};
 `;
 
-export const ShortsHeader = styled.div`
+export const ShortsHeader = styled.div<{
+  darkMode: boolean;
+  openMenu: boolean;
+}>`
   align-items: center;
   margin-top: -10px;
   margin-bottom: 20px;
@@ -65,6 +41,10 @@ export const ShortsHeader = styled.div`
   height: 35px;
   width: 100%;
   font-size: 1.3rem;
+  background-color: ${({ darkMode }) =>
+    darkMode ? 'hsl(0, 0%, 5%)' : 'white'};
+  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
+  padding: ${({ openMenu }) => (openMenu ? '0 100px' : '0 30px')};
 `;
 
 export const Icon = styled.img`
@@ -73,14 +53,18 @@ export const Icon = styled.img`
   margin-left: 10px;
 `;
 
-export const ShortsContainer = styled.div<{ openMenu: boolean }>`
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 1800px;
+export const ShortsContainer = styled.div<{
+  openMenu: boolean;
+  darkMode: boolean;
+}>`
+  max-width: 100%;
   display: grid;
-  padding: ${({ openMenu }) => (openMenu ? '0 40px' : '0 0')};
+  padding: ${({ openMenu }) => (openMenu ? '0 100px' : '0 30px')};
   grid-template-columns: ${({ openMenu }) =>
     openMenu ? 'repeat(8, 1fr)' : 'repeat(10, 1fr)'};
   column-gap: 20px;
   row-gap: 30px;
+  background-color: ${({ darkMode }) =>
+    darkMode ? 'hsl(0, 0%, 5%)' : 'white'};
+  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
 `;

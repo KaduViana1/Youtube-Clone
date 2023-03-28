@@ -22,9 +22,9 @@ export const TextContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Title = styled.span`
+export const Title = styled.span<{ darkMode: boolean }>`
   font-weight: 600;
-  color: #0f0f0f;
+  color: ${({ darkMode }) => (darkMode ? 'white' : '0f0f0f')};
 `;
 
 export const TextCard = styled.span`

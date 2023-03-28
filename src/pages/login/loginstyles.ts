@@ -18,6 +18,7 @@ export const InputContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: white;
   gap: 10px;
   box-sizing: border-box;
   border: 1px solid #d9d9d9;
@@ -28,6 +29,7 @@ export const InputContainer = styled.div`
 
 export const Logo = styled.img`
   width: 70px;
+  background-color: white;
 `;
 
 export const Input = styled.input`
@@ -39,6 +41,8 @@ export const Input = styled.input`
   border-radius: 5px;
   margin-top: 20px;
   padding-left: 15px;
+  background-color: white;
+  color: black;
 
   :focus {
     border: 2px solid #0066ff;
@@ -47,10 +51,12 @@ export const Input = styled.input`
 
 export const ButtonsContainer = styled.div`
   display: flex;
+  flex-direction: row-reverse;
   margin-top: 40px;
   justify-content: space-between;
   width: 87%;
   height: 50px;
+  background-color: white;
 `;
 
 export const LoginButton = styled.button`
@@ -95,4 +101,5 @@ export const Forgot = styled.span`
   color: hsl(216, 100%, 60%);
   cursor: pointer;
   font-weight: 600;
+  background-color: white;
 `;

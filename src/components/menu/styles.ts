@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ openMenu: boolean }>`
+export const Container = styled.div<{ openMenu: boolean; darkMode: boolean }>`
   width: ${({ openMenu }) => (openMenu ? '230px' : '70px')};
   min-width: ${({ openMenu }) => (openMenu ? '230px' : '70px')};
   height: calc(100vh - 55px);
@@ -10,17 +10,19 @@ export const Container = styled.div<{ openMenu: boolean }>`
   align-items: center;
   flex-direction: column;
   overflow-y: auto;
-  position: sticky;
+  position: fixed;
   top: 55px;
   z-index: 2;
-  background-color: white;
+  background-color: ${({ darkMode }) =>
+    darkMode ? 'hsl(0, 0%, 5%)' : 'white'};
+  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
 
   p {
     display: ${({ openMenu }) => (openMenu ? 'static' : 'none')};
   }
 `;
 
-export const MenuItem = styled.div<{ openMenu: boolean }>`
+export const MenuItem = styled.div<{ openMenu: boolean; darkMode: boolean }>`
   width: 98%;
   min-height: ${({ openMenu }) => (openMenu ? '45px' : '70px')};
   border-radius: 10px;
@@ -39,7 +41,8 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
   }
 
   :hover {
-    background-color: #f2f2f2;
+    background-color: ${({ darkMode }) =>
+      darkMode ? 'hsl(0, 0%, 15%)' : '#f2f2f2'};
   }
 `;
 
@@ -47,15 +50,16 @@ export const ButtonIcon = styled.img`
   width: 25px;
 `;
 
-export const Separator = styled.div<{ openMenu: boolean }>`
+export const Separator = styled.div<{ openMenu: boolean; darkMode: boolean }>`
   height: 20px;
   width: 100%;
-  border-top: 1px solid #d9d9d9;
+  border-top: ${({ darkMode }) =>
+    darkMode ? '1px solid hsl(0, 0%, 40%)' : '1px solid #d9d9d9'};
   margin: 10px 0;
   display: ${({ openMenu }) => (openMenu ? 'static' : 'none')};
 `;
 
-export const ModalItem = styled.div<{ openMenu: boolean }>`
+export const ModalItem = styled.div<{ openMenu: boolean; darkMode: boolean }>`
   width: 98%;
   min-height: ${({ openMenu }) => (openMenu ? '45px' : '70px')};
   border-radius: 10px;
@@ -74,7 +78,8 @@ export const ModalItem = styled.div<{ openMenu: boolean }>`
   }
 
   :hover {
-    background-color: #f2f2f2;
+    background-color: ${({ darkMode }) =>
+      darkMode ? 'hsl(0, 0%, 15%)' : '#f2f2f2'};
   }
 `;
 

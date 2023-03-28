@@ -1,14 +1,14 @@
 import { useContext } from 'react';
 import VideoCard from '../../components/videoComponent/VideoCard';
 import ShortsCard from '../../components/videoComponent/ShortsCard';
+
 import {
-  CategoryBar,
-  CategorySelector,
   Container,
   Icon,
   Separator,
   ShortsHeader,
   ShortsContainer,
+  SeparatorContainer,
 } from './homestyles';
 import Img01 from '../../assets/video_covers/image_01.webp';
 import Img02 from '../../assets/video_covers/image_02.webp';
@@ -30,7 +30,18 @@ import chanImg07 from '../../assets/channel_imgs/chanImg_07.jpg';
 import chanImg08 from '../../assets/channel_imgs/chanImg_08.jpg';
 import ShortsIcon from '../../assets/youtube_shorts.png';
 import Short01 from '../../assets/shorts_cover/short_01.webp';
+import Short02 from '../../assets/shorts_cover/short_02.webp';
+import Short03 from '../../assets/shorts_cover/short_03.webp';
+import Short04 from '../../assets/shorts_cover/short_04.webp';
+import Short05 from '../../assets/shorts_cover/short_05.webp';
+import Short06 from '../../assets/shorts_cover/short_06.webp';
+import Short07 from '../../assets/shorts_cover/short_07.webp';
+import Short08 from '../../assets/shorts_cover/short_08.webp';
+import Short09 from '../../assets/shorts_cover/short_09.webp';
+import Short10 from '../../assets/shorts_cover/short_10.webp';
 import { OpenMenuContext } from '../../context/menuContext';
+import { UserContext } from '../../context/userContext';
+import CategoriesBar from '../../components/categorybar/CategoriesBar';
 
 const videos = [
   {
@@ -106,36 +117,62 @@ const videos = [
   },
 ];
 
-const categories = [
-  'All',
-  'Gaming',
-  'Music',
-  'Live',
-  'Albums',
-  'Motivation',
-  'Podcasts',
-  'Playlists',
-  'Islands',
-  'Comedy',
-  'Learning',
-  'History',
-  'Rock Music',
-  'Mixes',
-  'Trailers',
-  'Recently uploaded',
-  'Nature',
-  'Ambient Music',
-  'Animals',
-  //'Forgiveness',
-  //'Thoughts',
-  'Stages',
-  // 'Chill-out music',
+const shorts = [
+  {
+    coverImg: Short01,
+    shortTitle: 'Three great gadgets for every man!',
+    views: '43M views',
+  },
+  {
+    coverImg: Short02,
+    shortTitle: 'pseudo-classes can do more than you...',
+    views: '42K views',
+  },
+  {
+    coverImg: Short03,
+    shortTitle: 'Will It Re-Render? React Game Show',
+    views: '37K views',
+  },
+  {
+    coverImg: Short04,
+    shortTitle: 'Tommy Kills Nucky | Boardwalk Empire',
+    views: '2.3M views',
+  },
+  {
+    coverImg: Short05,
+    shortTitle: 'Perspective Text | HTML CSS',
+    views: '12K views',
+  },
+  {
+    coverImg: Short06,
+    shortTitle: 'How is Reacher so big? |REACHER|',
+    views: '16M views',
+  },
+  {
+    coverImg: Short07,
+    shortTitle: 'Memes from the Internet',
+    views: '3.7M views',
+  },
+  {
+    coverImg: Short08,
+    shortTitle: 'Chris Rock on Getting SMACKED...',
+    views: '5.3M views',
+  },
+  {
+    coverImg: Short09,
+    shortTitle: 'How Would You Solve This Code...',
+    views: '21K views',
+  },
+  {
+    coverImg: Short10,
+    shortTitle: 'Jumping Text | HTML CSS',
+    views: '40K views',
+  },
 ];
-
-const shorts = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Home() {
   const { openMenu } = useContext(OpenMenuContext);
+  const { darkMode } = useContext(UserContext);
 
   function videoShower(): any {
     if (openMenu) {
@@ -169,21 +206,21 @@ function Home() {
     if (openMenu) {
       return shorts
         .slice(0, 8)
-        .map((short, i) => (
+        .map(short => (
           <ShortsCard
-            key={i}
-            coverImg={Short01}
-            videoTitle={'Three great gadgets for every man!'}
-            views={'43M views'}
+            key={short.shortTitle}
+            coverImg={short.coverImg}
+            shortTitle={short.shortTitle}
+            views={short.views}
           ></ShortsCard>
         ));
     } else {
       return shorts.map((short, i) => (
         <ShortsCard
-          key={i}
-          coverImg={Short01}
-          videoTitle={'Three great gadgets for every man!'}
-          views={'43M views'}
+          key={short.shortTitle}
+          coverImg={short.coverImg}
+          shortTitle={short.shortTitle}
+          views={short.views}
         ></ShortsCard>
       ));
     }
@@ -191,21 +228,24 @@ function Home() {
 
   return (
     <>
-      <CategoryBar>
-        {categories.map(categorie => (
-          <CategorySelector key={categorie.toString()}>
-            {categorie}
-          </CategorySelector>
-        ))}
-      </CategoryBar>
-      <Container openMenu={openMenu}>{videoShower()}</Container>
-      <Separator />
-      <ShortsHeader>
+      <CategoriesBar></CategoriesBar>
+      <Container darkMode={darkMode} openMenu={openMenu}>
+        {videoShower()}
+      </Container>
+      <SeparatorContainer openMenu={openMenu}>
+        <Separator darkMode={darkMode} />
+      </SeparatorContainer>
+      <ShortsHeader openMenu={openMenu} darkMode={darkMode}>
         <Icon src={ShortsIcon} />
         <span>Shorts</span>
       </ShortsHeader>
-      <ShortsContainer openMenu={openMenu}>{shortsShower()}</ShortsContainer>
-      <Separator />
+      <ShortsContainer darkMode={darkMode} openMenu={openMenu}>
+        {shortsShower()}
+      </ShortsContainer>
+
+      <SeparatorContainer openMenu={openMenu}>
+        <Separator darkMode={darkMode} />
+      </SeparatorContainer>
     </>
   );
 }

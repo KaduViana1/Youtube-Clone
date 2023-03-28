@@ -9,6 +9,7 @@ export const UserStorage = ({ children }: any) => {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(localStorage.getItem('token') as string);
   const [userIcon, setUserIcon] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
 
   const getUser = (token: string) => {
@@ -46,7 +47,7 @@ export const UserStorage = ({ children }: any) => {
     api
       .post('/user/sign-up', { name, email, password })
       .then(() => handleLogin(email, password))
-      .catch(error => console.log('Unable to create user', error));
+      .catch(error => console.error('Unable to create user', error));
   };
 
   const logOut = () => {
@@ -54,11 +55,47 @@ export const UserStorage = ({ children }: any) => {
     setLogin(false);
     setUser({});
     setUserIcon('');
+    navigate('/');
   };
+
+  const changeTheme = () => {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'light') {
+      localStorage.setItem('theme', 'dark');
+      setDarkMode(true);
+      document.body.style.backgroundColor = 'hsl(0, 0%, 5%)';
+    } else {
+      localStorage.setItem('theme', 'light');
+      setDarkMode(false);
+      document.body.style.backgroundColor = 'white';
+    }
+  };
+
+  useEffect(() => {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'light') {
+      setDarkMode(false);
+      document.body.style.backgroundColor = 'white';
+    } else {
+      setDarkMode(true);
+      document.body.style.backgroundColor = 'hsl(0, 0%, 5%)';
+    }
+  }, []);
 
   return (
     <UserContext.Provider
-      value={{ login, user, handleLogin, logOut, userIcon, createUser }}
+      value={{
+        login,
+        user,
+        handleLogin,
+        logOut,
+        userIcon,
+        createUser,
+        darkMode,
+        setDarkMode,
+        changeTheme,
+        token,
+      }}
     >
       {children}
     </UserContext.Provider>

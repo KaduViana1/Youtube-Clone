@@ -24,10 +24,12 @@ export const InputContainer = styled.div`
   height: 500px;
   width: 450px;
   border-radius: 6px;
+  background-color: white;
 `;
 
 export const Logo = styled.img`
   width: 70px;
+  background-color: white;
 `;
 
 export const Input = styled.input`
@@ -40,6 +42,8 @@ export const Input = styled.input`
   margin-top: 20px;
   padding-left: 15px;
   box-sizing: border-box;
+  background-color: white;
+  color: black;
 
   :focus {
     border: 2px solid #0066ff;
@@ -48,10 +52,12 @@ export const Input = styled.input`
 
 export const ButtonsContainer = styled.div`
   display: flex;
+  flex-direction: row-reverse;
   margin-top: 40px;
   justify-content: space-between;
   width: 87%;
   height: 50px;
+  background-color: white;
 `;
 
 export const LoginButton = styled.button`

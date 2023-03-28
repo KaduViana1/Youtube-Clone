@@ -1,41 +1,53 @@
-import { useContext } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 import Header from './components/header';
 import Menu from './components/menu';
-import { MenuContext, OpenMenuContext } from './context/menuContext';
+import PageContainer from './components/pageContainer/PageContainer';
+import { MenuContext } from './context/menuContext';
 import { UserStorage } from './context/userContext';
+import { VideoStorage } from './context/videosContext';
 import CreateUser from './pages/create_user/CreateUser';
-import History from './pages/history/History';
 import Home from './pages/home/Home';
-import Library from './pages/library/Library';
+
 import Login from './pages/login/Login';
+import Search from './pages/search/Search';
 
 function App() {
-  const { openMenu } = useContext(OpenMenuContext);
+  const [searchParams, setSearchParams] = useSearchParams({ search: '' });
+  const search = searchParams.get('search');
 
   return (
     <>
       <UserStorage>
-        <MenuContext>
-          <Header />
-          <div style={{ width: '100%', display: 'flex' }}>
-            <Menu />
+        <VideoStorage>
+          <MenuContext>
+            <Header setSearchParams={setSearchParams} search={search} />
             <div
-              className="main"
               style={{
-                padding: openMenu ? '0 50px' : '0 30px',
+                width: '100%',
+                display: 'flex',
               }}
             >
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/library" element={<Library />} />
-                <Route path="/history" element={<History />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/create_user" element={<CreateUser />} />
-              </Routes>
+              <Menu />
+              <PageContainer>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/create_user" element={<CreateUser />} />
+                  <Route
+                    path={`/results`}
+                    element={
+                      <Search
+                        search={search}
+                        searchParams={searchParams}
+                        setSearchParams={setSearchParams}
+                      />
+                    }
+                  />
+                </Routes>
+              </PageContainer>
             </div>
-          </div>
-        </MenuContext>
+          </MenuContext>
+        </VideoStorage>
       </UserStorage>
     </>
   );

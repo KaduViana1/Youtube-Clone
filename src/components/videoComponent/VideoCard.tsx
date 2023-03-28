@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { UserContext } from '../../context/userContext';
 import {
   ChannelImage,
   Container,
@@ -23,6 +25,8 @@ function VideoCard({
   channelName,
   views,
 }: VideoProps) {
+  const { darkMode } = useContext(UserContext);
+
   return (
     <>
       <Container>
@@ -30,7 +34,7 @@ function VideoCard({
         <TitleContainer>
           <ChannelImage src={channelImg}></ChannelImage>
           <TextContainer>
-            <Title>{videoTitle}</Title>
+            <Title darkMode={darkMode}>{videoTitle}</Title>
             <TextCard>{channelName}</TextCard>
             <TextCard>{views}</TextCard>
           </TextContainer>

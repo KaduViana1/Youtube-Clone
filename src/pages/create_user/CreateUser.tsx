@@ -13,10 +13,12 @@ import GoogleLogo from '../../assets/google_logo.png';
 import { useNavigate } from 'react-router-dom';
 
 function CreateUser() {
-  const { handleLogin, login, createUser } = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  const { login, createUser } = useContext(UserContext);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    name: '',
+  });
   const navigate = useNavigate();
 
   return (
@@ -25,41 +27,76 @@ function CreateUser() {
         navigate('/')
       ) : (
         <CreationContainer>
-          <InputContainer>
-            <Logo src={GoogleLogo} />
-            <span style={{ fontSize: '1.5rem' }}>Create Your Account</span>
-            <span style={{ fontSize: '1.1rem' }}>to continue to Youtube</span>
-            <Input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
-            <Input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-            <Input
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-            <ButtonsContainer>
-              <CreateButton onClick={() => navigate('/login')}>
-                Sign in instead
-              </CreateButton>
-              <LoginButton
-                onClick={e => {
-                  createUser(name, email, password);
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              createUser(formData.name, formData.email, formData.password);
+            }}
+          >
+            <InputContainer>
+              <Logo src={GoogleLogo} />
+              <span
+                style={{
+                  fontSize: '1.5rem',
+                  backgroundColor: 'white',
+                  color: 'black',
                 }}
               >
-                Sign up
-              </LoginButton>
-            </ButtonsContainer>
-          </InputContainer>
+                Create Your Account
+              </span>
+              <span
+                style={{
+                  fontSize: '1.1rem',
+                  backgroundColor: 'white',
+                  color: 'black',
+                }}
+              >
+                to continue to Youtube
+              </span>
+              <Input
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={e =>
+                  setFormData(prev => ({ ...prev, name: e.target.value }))
+                }
+              />
+              <Input
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={e =>
+                  setFormData(prev => ({ ...prev, email: e.target.value }))
+                }
+              />
+              <Input
+                placeholder="Password"
+                type="password"
+                value={formData.password}
+                onChange={e =>
+                  setFormData(prev => ({ ...prev, password: e.target.value }))
+                }
+              />
+              <ButtonsContainer>
+                <LoginButton
+                  type="submit"
+                  onSubmit={e => {
+                    e.preventDefault();
+                    createUser(
+                      formData.name,
+                      formData.email,
+                      formData.password
+                    );
+                  }}
+                >
+                  Sign up
+                </LoginButton>
+                <CreateButton onClick={() => navigate('/login')}>
+                  Sign in instead
+                </CreateButton>
+              </ButtonsContainer>
+            </InputContainer>
+          </form>
         </CreationContainer>
       )}
     </>

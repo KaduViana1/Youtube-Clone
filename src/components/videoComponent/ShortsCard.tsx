@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { UserContext } from '../../context/userContext';
 import {
   Container,
   ImageBanner,
@@ -9,18 +11,20 @@ import {
 
 interface ShortsProps {
   coverImg: string;
-  videoTitle: string;
+  shortTitle: string;
   views: string;
 }
 
-function ShortsCard({ coverImg, videoTitle, views }: ShortsProps) {
+function ShortsCard({ coverImg, shortTitle, views }: ShortsProps) {
+  const { darkMode } = useContext(UserContext);
+
   return (
     <>
       <Container>
         <ImageBanner src={coverImg} />
         <TitleContainer>
           <TextContainer>
-            <Title>{videoTitle}</Title>
+            <Title darkMode={darkMode}>{shortTitle}</Title>
             <TextCard>{views}</TextCard>
           </TextContainer>
         </TitleContainer>
