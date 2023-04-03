@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const ModalContainer = styled.div<{ createVideoModal: boolean }>`
-  width: 100%;
-  height: 100vw;
-  max-height: 900px;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;

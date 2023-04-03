@@ -6,7 +6,7 @@ export const CategoryBar = styled.div<{ darkMode: boolean; openMenu: boolean }>`
   position: fixed;
   justify-content: flex-start;
   max-width: ${({ openMenu }) =>
-    openMenu ? 'calc(100% - 250px)' : 'calc(100% - 90px)'};
+    openMenu ? 'calc(100% - 260px)' : 'calc(100% - 100px)'};
   top: 55px;
   height: 60px;
   padding-block: 5px;

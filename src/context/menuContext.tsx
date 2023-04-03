@@ -10,9 +10,11 @@ export const MenuContext = ({ children }: any) => {
   const handleModal = () => {
     if (createVideoModal === false) {
       document.body.style.overflow = 'hidden';
+      document.body.style.marginRight = '15px';
       setCreateVideoModal(true);
     } else {
       document.body.style.overflow = 'visible';
+      document.body.style.marginRight = '0';
       setCreateVideoModal(false);
     }
   };
