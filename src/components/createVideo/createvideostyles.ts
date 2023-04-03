@@ -87,6 +87,7 @@ export const Form = styled.form<{ darkMode: boolean }>`
   .textArea {
     width: 35%;
     height: 250px;
+    resize: none;
   }
 
   textarea {
