@@ -8,9 +8,12 @@ export const MenuContext = ({ children }: any) => {
   const [createVideoModal, setCreateVideoModal] = useState(false);
 
   const handleModal = () => {
+    const scrollWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
     if (createVideoModal === false) {
       document.body.style.overflow = 'hidden';
-      document.body.style.marginRight = '15px';
+      document.body.style.marginRight = scrollWidth.toString() + 'px';
       setCreateVideoModal(true);
     } else {
       document.body.style.overflow = 'visible';
