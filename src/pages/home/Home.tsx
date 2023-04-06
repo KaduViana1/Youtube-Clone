@@ -50,6 +50,7 @@ const videos = [
     videoTitle: 'Millio W + Jinx Q is AMAZING!',
     channelName: 'Vandiril',
     views: '203K views - 12 hours ago',
+    videoDuration: '1:19',
   },
   {
     coverImg: Img02,
@@ -57,6 +58,7 @@ const videos = [
     videoTitle: 'Paint - Official Trailer (2023) Owen Wilson',
     channelName: 'IGN',
     views: '72K views - 11 hours ago',
+    videoDuration: '2:13',
   },
   {
     coverImg: Img04,
@@ -64,6 +66,7 @@ const videos = [
     videoTitle: 'AGENT ELVIS | Official Trailer | Netflix',
     channelName: 'Netflix',
     views: '226K views - 6 days ago',
+    videoDuration: '2:28',
   },
   {
     coverImg: Img03,
@@ -72,6 +75,7 @@ const videos = [
       'The Flash - Officeial Trailer (2023) Michael Keaton, Ezra Miller, Sasha Calle',
     channelName: 'IGN',
     views: '965K views - 3 weeks ago',
+    videoDuration: '2:57',
   },
   {
     coverImg: Img05,
@@ -79,13 +83,15 @@ const videos = [
     videoTitle: '3 super small changes to improve your css',
     channelName: 'Kevin Powell',
     views: '21K views - 22 hours ago',
+    videoDuration: '14:24',
   },
   {
     coverImg: Img06,
     channelImg: chanImg05,
-    videoTitle: 'Are You Building Projects Wrong',
+    videoTitle: 'Are You Building Projects Wrong?',
     channelName: 'Web Dev Simplified',
     views: '56K views - 2 years ago',
+    videoDuration: '10:26',
   },
   {
     coverImg: Img07,
@@ -93,6 +99,7 @@ const videos = [
     videoTitle: 'Resident Evil 4 – 3.º trailer',
     channelName: 'PlayStation',
     views: '1,6M views - 12 days ago',
+    videoDuration: '2:29',
   },
   {
     coverImg: Img08,
@@ -100,6 +107,7 @@ const videos = [
     videoTitle: 'These Mistakes Almost Stopped Me From Learning To Code',
     channelName: 'Web Dev Simplified',
     views: '156K views - 1 year ago',
+    videoDuration: '11:34',
   },
   {
     coverImg: Img09,
@@ -107,6 +115,7 @@ const videos = [
     videoTitle: 'React for the Haters in 100 seconds',
     channelName: 'Fireship',
     views: '1M views - 10 months ago',
+    videoDuration: '2:34',
   },
   {
     coverImg: Img10,
@@ -114,6 +123,7 @@ const videos = [
     videoTitle: "Oliver Tree - I'm Gone [Music VIdeo]",
     channelName: 'Oliver Tree',
     views: '25M views - 2 years ago',
+    videoDuration: '3:33',
   },
 ];
 
@@ -186,6 +196,7 @@ function Home() {
             videoTitle={video.videoTitle}
             channelName={video.channelName}
             views={video.views}
+            videoDuration={video.videoDuration}
           />
         ));
     } else {
@@ -197,6 +208,7 @@ function Home() {
           videoTitle={video.videoTitle}
           channelName={video.channelName}
           views={video.views}
+          videoDuration={video.videoDuration}
         />
       ));
     }

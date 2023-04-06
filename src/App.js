@@ -34,7 +34,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/create_user" element={<CreateUser />} />
                   <Route
-                    path={`/results`}
+                    path="/results"
                     element={
                       <Search
                         search={search}

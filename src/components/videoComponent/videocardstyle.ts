@@ -5,9 +5,27 @@ export const Container = styled.div`
   cursor: pointer;
 `;
 
-export const ImageBanner = styled.img`
+export const BannerContainer = styled.div`
   width: 100%;
   height: 210px;
+  border-radius: 12px;
+  position: relative;
+`;
+
+export const VideoDuration = styled.span`
+  border-radius: 5px;
+  padding-inline: 4px;
+  position: absolute;
+  background-color: hsl(0, 0%, 5%);
+  color: white;
+  font-size: 0.85rem;
+  bottom: 5px;
+  right: 5px;
+`;
+
+export const ImageBanner = styled.img`
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
 `;
 

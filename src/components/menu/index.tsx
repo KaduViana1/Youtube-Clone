@@ -91,11 +91,7 @@ function Menu() {
         <span>Originals</span>
       </MenuItem>
       <Separator darkMode={darkMode} openMenu={openMenu} />
-      <MenuItem
-        openMenu={openMenu}
-        darkMode={darkMode}
-        onClick={() => navigate('/library')}
-      >
+      <MenuItem openMenu={openMenu} darkMode={darkMode}>
         <ButtonIcon alt="library" src={darkMode ? Library_D : Library} />
         <span>Library</span>
       </MenuItem>
