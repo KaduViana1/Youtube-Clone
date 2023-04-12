@@ -20,6 +20,7 @@ export const CategoryBar = styled.div<{ darkMode: boolean; openMenu: boolean }>`
   flex-wrap: nowrap;
   overflow: auto;
   scrollbar-width: none;
+  z-index: 2;
 
   ::-webkit-scrollbar {
     height: 0;
