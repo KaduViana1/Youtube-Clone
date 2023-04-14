@@ -18,6 +18,8 @@ function Search({ searchParams, setSearchParams, search }: PropsTypes) {
   const { darkMode } = useContext(UserContext);
   search = searchInputValue;
 
+  const videoDisplay = videos ? [...videos] : [];
+
   const uploadDate = (videoDate: Date) => {
     return new Date(videoDate);
   };
@@ -44,7 +46,7 @@ function Search({ searchParams, setSearchParams, search }: PropsTypes) {
         Filters
       </Filters>
       <Separator darkMode={darkMode}></Separator>
-      {videos.map((video: VideoProps) => (
+      {videoDisplay.map((video: VideoProps) => (
         <SearchDisplay
           key={video.video_id}
           title={video.title}
