@@ -10,6 +10,7 @@ export const BannerContainer = styled.div`
   height: 210px;
   border-radius: 12px;
   position: relative;
+  margin-bottom: 10px;
 `;
 
 export const VideoDuration = styled.span`

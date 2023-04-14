@@ -26,6 +26,8 @@ function CreateVideo() {
   const { createVideo } = useContext(VideosContext);
   const { user, darkMode } = useContext(UserContext);
   const { createVideoModal, handleModal } = useContext(OpenMenuContext);
+  const userId = user ? user.id : '';
+  console.log(user);
 
   return (
     <>
@@ -45,6 +47,7 @@ function CreateVideo() {
             onSubmit={e => {
               e.preventDefault();
               createVideo(
+                userId,
                 formData.title,
                 formData.cardImage,
                 formData.description
@@ -91,6 +94,7 @@ function CreateVideo() {
               onSubmit={e => {
                 e.preventDefault();
                 createVideo(
+                  userId,
                   formData.title,
                   formData.cardImage,
                   formData.description
